@@ -1,0 +1,18 @@
+marine <- read.csv("D:/Ryerson/Capstone/Project - Smart Ship/MarineData-OpenCanadaPortal/MarineOcc_Eng.csv")
+View(marine)
+
+require(ggplot2)
+data(marine)
+
+head(marine)
+
+
+barplot(table(marine$OccurrenceType), main="Occurence Type", names= c("Accident", "Incident"))
+barplot(table(marine$OccSubType), main="Occurence Type")
+
+OccurenceTypeByLocation = table(marine$OccurrenceType,marine$Region)
+barplot(OccurenceTypeByLocation, col=c("red","yellow"), legend = c("Accident","Incident"), main = "Occurence Type by region")
+
+OccurenceTypeByVessel = table(marine$OccurrenceType,marine$PrimaryVesselType)
+barplot(OccurenceTypeByVessel, col=c("red","yellow"), legend = rownames(OccurenceTypeByVessel), main = "Occurence Type by vessel")
+
